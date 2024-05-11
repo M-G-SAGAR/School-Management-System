@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,14 +45,26 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    
+                                   <!--  <form action="/index" method="post" class="user"> -->
+                                      <form action="<c:url value='/index' />" method="post">
+                                             <c:if test="${param.error != null}">
+									            <div class="alert alert-danger">
+									                Invalid credentials. Please try again.
+									            </div>
+									        </c:if>
+									        <c:if test="${param.logout != null}">
+									            <div class="alert alert-success">
+									                Logout successful.
+									            </div>
+									        </c:if>  
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -60,9 +74,10 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <!-- <a class="btn btn-primary btn-user btn-block" type="submit">
                                             Login
-                                        </a>
+                                        </a> -->
+                                        <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
