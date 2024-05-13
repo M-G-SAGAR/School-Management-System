@@ -47,7 +47,7 @@
                                     </div>
                                     
                                    <!--  <form action="/index" method="post" class="user"> -->
-                                      <form action="<c:url value='/index' />" method="post">
+                                      <form action="<c:url value='/dashboard' />" method="post">
                                              <c:if test="${param.error != null}">
 									            <div class="alert alert-danger">
 									                Invalid credentials. Please try again.
@@ -88,10 +88,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="forgot-password">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="signup">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
