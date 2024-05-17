@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,11 +55,11 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <!-- <div class="sidebar-heading">
                 Interface
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            Nav Item - Pages Collapse Menu
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -74,7 +75,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            Nav Item - Utilities Collapse Menu
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -91,7 +92,7 @@
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -111,8 +112,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="signin">Login</a>
-                        <a class="collapse-item" href="signup">Register</a>
+                        <a class="collapse-item" href="add-student">Create</a>
+                        <a class="collapse-item" href="show-students">Show Students</a>
                         <a class="collapse-item" href="forgot-password">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -124,16 +125,16 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="add-student">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Add Student</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="show-students">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>All Student Data</span></a>
             </li>
 
             <!-- Divider -->
@@ -332,7 +333,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${user.userName }</span>
                                 <img class="img-profile rounded-circle"
                                     src="../../img/undraw_profile.svg">
                             </a>
@@ -375,9 +376,9 @@
                     </div>
 
                     <!-- Content Row -->
-                    <div class="row">
+                    <!-- <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        Earnings (Monthly) Card Example
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -395,7 +396,7 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        Earnings (Monthly) Card Example
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
@@ -413,7 +414,7 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
+                        Earnings (Monthly) Card Example
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -442,7 +443,7 @@
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        Pending Requests Card Example
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -459,16 +460,16 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Content Row -->
 
-                    <div class="row">
+                    <!-- <div class="row">
 
-                        <!-- Area Chart -->
+                        Area Chart
                         <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                                Card Header - Dropdown
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
@@ -487,7 +488,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Card Body -->
+                                Card Body
                                 <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
@@ -496,10 +497,10 @@
                             </div>
                         </div>
 
-                        <!-- Pie Chart -->
+                        Pie Chart
                         <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                                Card Header - Dropdown
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
@@ -518,7 +519,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Card Body -->
+                                Card Body
                                 <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
@@ -537,15 +538,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Content Row -->
-                    <div class="row">
+           <!--          <div class="row">
 
-                        <!-- Content Column -->
+                        Content Column
                         <div class="col-lg-6 mb-4">
 
-                            <!-- Project Card Example -->
+                            Project Card Example
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
@@ -584,7 +585,7 @@
                                 </div>
                             </div>
 
-                            <!-- Color System -->
+                            Color System
                             <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-primary text-white shadow">
@@ -656,7 +657,7 @@
 
                         <div class="col-lg-6 mb-4">
 
-                            <!-- Illustrations -->
+                            Illustrations
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
@@ -675,7 +676,7 @@
                                 </div>
                             </div>
 
-                            <!-- Approach -->
+                            Approach
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
@@ -691,7 +692,7 @@
 
                         </div>
                     </div>
-
+ -->
                 </div>
                 <!-- /.container-fluid -->
 
