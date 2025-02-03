@@ -111,4 +111,12 @@ public class HomeController {
 		model.addAttribute("title" , "About - School Management System");
 		return "about";
 	}
+	
+	
+	@GetMapping("/test")
+	public String test() {
+		return "user_index";
+	}
+	
+	
 }

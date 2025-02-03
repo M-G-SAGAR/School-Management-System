@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +35,8 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-       <ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        <ul
+			class="navbar-nav bg-dark sidebar sidebar-dark accordion"
 			id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
@@ -57,7 +57,7 @@
 			<li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>List Of Students</span></a>
+                    <span>List Of Teachers</span></a>
             </li> 
 
 <!-- Divider -->
@@ -388,60 +388,61 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                        	<th>Id</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email</th>
-                                            <th>Roll No.</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:forEach items="${students }" var="student" >
-                                        <tr>
-                                        	<td class="font-weight-bold">
-	                                        	<a href="student/${student.id}/show"
-													style="color: blue; text-decoration: none;">STUDENT#${student.id }
-												</a>
-											</td>
-                                            <td>${student.firstName }</td>
-                                            <td>${student.lastName }</td>
-                                            <td>${student.email }</td>
-                                            <td>${student.rollNumber }</td>
-                                            
-                                            <td>
-											<form action="student/${student.id}/edit" method="post">
-											<button type="submit" class="btn btn-outline-success btn-sm">
-    											<!-- <i class="fa fa-pen"> </i>--> Update
-											</button>
-											</form>
-											
-											<a href="#" class="btn btn-outline-danger btn-sm mt-2" onclick="deleteStudent(${student.id});">
-    												<!-- <i class="fa fa-trash"></i>--> Delete
-											</a>
-											</td> 
-                                        </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               <div class="container-fluid">
+               
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <!-- DataTables Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Subject</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${teachers}" var="teacher">
+                            <tr>
+                                <td class="font-weight-bold">
+                                    <a href="student/${teacher.tid}/show" style="color: blue; text-decoration: none;">
+                                        TEACHER#${teacher.tid}
+                                    </a>
+                                </td>
+                                <td>${teacher.firstName}</td>
+                                <td>${teacher.secondName}</td>
+                                <td>${teacher.email}</td>
+                                <td>${teacher.phone}</td>
+                                <td>${teacher.subject}</td>
+                                <td>
+                                    <form action="student/${teacher.tid}/edit" method="post">
+                                        <button type="submit" class="btn btn-outline-success btn-sm">
+                                            <i class="fa-solid fa-arrows-rotate"></i>Update
+                                        </button>
+                                    </form>
+                                    <a href="#" class="btn btn-outline-danger btn-sm mt-2" onclick="deleteStudent(${teacher.tid});">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+               
                 <!-- /.container-fluid -->
 
             </div>
