@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,6 +14,27 @@
     <meta name="author" content="">
 
     <title>Tables</title>
+    <style>
+		.sidebar-custom-blue {
+	    background-color: #003366 !important; /* Dark Blue */
+		}
+		
+		.navbar {
+            background-color: #fbbf24;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .my_profile_picture{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    }
+	
+	</style>
 
     <!-- Custom fonts for this template -->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,6 +47,10 @@
 
     <!-- Custom styles for this page -->
     <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
@@ -35,32 +60,29 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul
-			class="navbar-nav bg-dark sidebar sidebar-dark accordion"
-			id="accordionSidebar">
+			<ul class="navbar-nav sidebar sidebar-dark accordion sidebar-custom-blue" id="accordionSidebar">
+		
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
+					<!-- <i class="fas fa-laugh-wink"></i> -->
+					<i class="fa-solid fa-graduation-cap"></i>
 				</div>
 				<div class="sidebar-brand-text mx-3">
-					User <sup></sup>
+					School Mang. Sys  <sup></sup>
 				</div>
 			</a>
 
-<!-- Divider -->
+			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>List Of Teachers</span></a>
-            </li> 
+			<li class="nav-item active"><a class="nav-link"
+				href="index"><i class="fa-solid fa-house"></i> <span>Home</span></a>
+			</li>
 
-<!-- Divider -->
+			<!-- Divider -->
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
@@ -69,8 +91,7 @@
 			<!--   Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i
-					class="fas fa-fw fa-cog"></i> <span>Teachers</span>
+				aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-person-chalkboard"></i> <span>Teachers</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -79,32 +100,32 @@
 						<a class="collapse-item" href="add-teacher">Add Teacher</a> <a
 							class="collapse-item" href="show-teachers">Show Teacher Table</a>
 					</div>
-				</div>
-			</li>
-			
-<!-- Divider -->
-		
+				</div></li>
+
+			<!-- Divider -->
+			<!--  <hr class="sidebar-divider"> -->
+
+
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseStudents"
-				aria-expanded="true" aria-controls="collapseStudents"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Students</span>
+				aria-expanded="true" aria-controls="collapseStudents"> <i class="fa-solid fa-user"></i> <span>Students</span>
 			</a>
 				<div id="collapseStudents" class="collapse"
 					aria-labelledby="headingStudents" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-student">Add Student</a> <a
-							class="collapse-item" href="show-students">Show Student Table</a>
+						<a class="collapse-item" href="add-student">Admit Form</a> 
+						<a class="collapse-item" href="show-students">Show Student Table</a>
+						<a class="collapse-item" href="show-students">Student Promotion</a>
+						
 					</div>
-				</div>
-			</li>
+				</div></li>
 
-<!-- Divider -->
+			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseParents"
-				aria-expanded="true" aria-controls="collapseParents"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Parents</span>
+				aria-expanded="true" aria-controls="collapseParents"> <i class="fa-solid fa-id-badge"></i> <span>Parents</span>
 			</a>
 				<div id="collapseParents" class="collapse"
 					aria-labelledby="headingParents" data-parent="#accordionSidebar">
@@ -112,15 +133,13 @@
 						<a class="collapse-item" href="add-parent">Add Parent</a> <a
 							class="collapse-item" href="show-parents">Show Parent Table</a>
 					</div>
-				</div>
-			</li>
+				</div></li>
 
-<!-- Divider -->
+			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseClasses"
-				aria-expanded="true" aria-controls="collapseClasses"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Classes</span>
+				aria-expanded="true" aria-controls="collapseClasses"> <i class="fa-solid fa-book"></i> <span>Classes</span>
 			</a>
 				<div id="collapseClasses" class="collapse"
 					aria-labelledby="headingClasses" data-parent="#accordionSidebar">
@@ -128,15 +147,13 @@
 						<a class="collapse-item" href="add-student">Add Class</a> <a
 							class="collapse-item" href="show-students">Show Class Table</a>
 					</div>
-				</div>
-			</li>
+				</div></li>
 
-<!-- Divider -->
+			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseSubjects"
-				aria-expanded="true" aria-controls="collapseSubjects"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Subjects</span>
+				aria-expanded="true" aria-controls="collapseSubjects"> <i class="fa-solid fa-book-open"></i> <span>Subjects</span>
 			</a>
 				<div id="collapseSubjects" class="collapse"
 					aria-labelledby="headingSubjects" data-parent="#accordionSidebar">
@@ -145,26 +162,85 @@
 							class="collapse-item" href="show-subjects">Show Subjects
 							Table</a>
 					</div>
-				</div>
-			</li>
-			
+				</div></li>
+
 			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i
-					class="fas fa-fw fa-wrench"></i> <span>Attendance</span>
+				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa-solid fa-clipboard-user"></i> <span>Attendance</span>
 			</a>
 				<div id="collapseAttendance" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="attendance">Add Attendance</a>
-						<a class="collapse-item" href="show-attendance">Show
-							Attendance Table</a>
+						<a class="collapse-item" href="attendance">Add Attendance</a> <a
+							class="collapse-item" href="show-attendance">Show Attendance
+							Table</a>
 					</div>
-				</div>
-			</li>
-			
+				</div></li>
+
+			<!-- Divider -->
+
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseAttendance"
+				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fas fa-clipboard"></i> <span>Notice</span>
+			</a>
+				<div id="collapseAttendance" class="collapse"
+					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="attendance">Add Notice</a> <a
+							class="collapse-item" href="show-attendance">Show Notice
+							Table</a>
+					</div>
+				</div></li>
+				
+				<!-- Divider -->
+
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseAttendance"
+				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-comments"></i> <span>Message</span>
+			</a>
+				<div id="collapseAttendance" class="collapse"
+					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="attendance">Add Message</a> <a
+							class="collapse-item" href="show-attendance">Show Message
+							Table</a>
+					</div>
+				</div></li>
+				
+				<!-- Divider -->
+
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseAttendance"
+				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fas fa-file-alt"></i> <span>Exam</span>
+			</a>
+				<div id="collapseAttendance" class="collapse"
+					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="attendance">Add Exam</a> <a
+							class="collapse-item" href="show-attendance">Show Exam
+							Table</a>
+					</div>
+				</div></li>
+				
+				<!-- Divider -->
+
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseAttendance"
+				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa fa-user"></i> <span>Account</span>
+			</a>
+				<div id="collapseAttendance" class="collapse"
+					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="attendance">Add Account</a> <a
+							class="collapse-item" href="show-attendance">Show Account
+							Table</a>
+					</div>
+				</div></li>
+
+
+
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 
@@ -172,6 +248,9 @@
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
+
+
+
 		</ul>
         <!-- End of Sidebar -->
 
@@ -182,7 +261,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <form class="form-inline">
@@ -192,7 +271,7 @@
                     </form>
 
                     <!-- Topbar Search -->
-                    <form
+                    <!-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -203,7 +282,8 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
+                     <div class="navbar">Welcome to School Management System</div>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -306,7 +386,7 @@
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">Hi there! I am wondering if you can help me with a
                                             problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                        <div class="small text-gray-500">Emily Fowler Â· 58m</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -318,7 +398,7 @@
                                     <div>
                                         <div class="text-truncate">I have the photos that you ordered last month, how
                                             would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                                        <div class="small text-gray-500">Jae Chun Â· 1d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -330,7 +410,7 @@
                                     <div>
                                         <div class="text-truncate">Last month's report looks great, I am very happy with
                                             the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                        <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -342,7 +422,7 @@
                                     <div>
                                         <div class="text-truncate">Am I a good boy? The reason I ask is because someone
                                             told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                        <div class="small text-gray-500">Chicken the Dog Â· 2w</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -391,15 +471,16 @@
                <div class="container-fluid">
                
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1> -->
     <!-- DataTables Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">DataTables - Teachers</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+               <!--  id="dataTable" -->
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -411,11 +492,11 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <%-- <tbody>
                         <c:forEach items="${teachers}" var="teacher">
                             <tr>
                                 <td class="font-weight-bold">
-                                    <a href="student/${teacher.tid}/show" style="color: blue; text-decoration: none;">
+                                    <a href="teacher/${teacher.tid}/show" style="color: blue; text-decoration: none;">
                                         TEACHER#${teacher.tid}
                                     </a>
                                 </td>
@@ -425,18 +506,68 @@
                                 <td>${teacher.phone}</td>
                                 <td>${teacher.subject}</td>
                                 <td>
-                                    <form action="student/${teacher.tid}/edit" method="post">
+                                <div>
+                                    <form action="teacher/${teacher.tid}/edit" method="post">
                                         <button type="submit" class="btn btn-outline-success btn-sm">
-                                            <i class="fa-solid fa-arrows-rotate"></i>Update
+                                            <i class="fa-solid w-5 h-5 fa-pen"></i>
                                         </button>
                                     </form>
                                     <a href="#" class="btn btn-outline-danger btn-sm mt-2" onclick="deleteStudent(${teacher.tid});">
-                                        Delete
+                                       <i class="fa-solid w-5 h-5 fa-trash"></i> 
                                     </a>
+                                     <a href="teacher/${teacher.tid}/show" class="btn btn-outline-primary btn-sm mt-2" onclick="deleteStudent(${teacher.tid});">
+                                       <i class="fa-solid w-5 h-5 fa-eye"></i> 
+                                    </a>
+                                    </div>
                                 </td>
                             </tr>
                         </c:forEach>
-                    </tbody>
+                    </tbody> --%>
+                    <tbody>
+										<c:forEach items="${teachers }" var="teacher">
+											<tr>
+												<td class="font-weight-bold">
+												<a
+													href="teacher/${teacher.tid}/show"
+													style="color: blue; text-decoration: none;">
+													TEACHER#${teacher.tid}
+												</a>
+												</td>
+												<td>
+												<img alt="profilePhoto" src="<c:url value='/img/${teacher.image}'/>" class="my_profile_picture">
+												
+												<span> ${teacher.firstName }</span></td>
+                                				<td>${teacher.secondName}</td>
+                                				<td>${teacher.email}</td>
+                                				<td>${teacher.phone}</td>
+                                				<td>${teacher.subject}</td>
+												<td>
+													<div class="d-flex align-items-center gap-2 m-1">
+														<!-- Added margin to the container -->
+														<form action="teacher/${teacher.tid}/edit" method="post"
+															class="m-0 p-0">
+															<button type="submit"
+																class="btn btn-outline-success btn-sm mx-1 my-0">
+																<!-- Horizontal margin -->
+																<i class="fa fa-pen"></i>
+															</button>
+														</form>
+														<a href="#"
+															class="btn btn-outline-danger btn-sm mx-1 my-0"
+															onclick="deleteTeacher(${teacher.tid});"> <i
+															class="fa fa-trash"></i>
+														</a> 
+														
+                                    					<a href="teacher/${teacher.tid}/show"
+															class="btn btn-outline-primary btn-sm mx-1 my-0"> 
+															<i class="fa fa-eye"></i>
+														</a>
+													</div>
+												</td>
+
+											</tr>
+										</c:forEach>
+									</tbody>
                 </table>
             </div>
         </div>
@@ -477,7 +608,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">Ã—</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -496,10 +627,40 @@
 	
 	<script>
 		
-		function deleteStudent(id){
+	function deleteTeacher(tid) {
+	    swal({
+	        title: "Are you sure?",
+	        text: "You want to delete this Teacher!",
+	        icon: "warning",
+	        buttons: true,
+	        dangerMode: true,
+	    })
+	    .then((willDelete) => {
+	        if (willDelete) {
+	            $.ajax({
+	                url: "teacher/" + tid + "/delete",
+	                type: "POST", // Changed to POST
+	                success: function(response) {
+	                    swal("Deleted!", "The teacher has been deleted.", "success")
+	                        .then(() => {
+	                            location.reload(); // Refresh the page after deletion
+	                        });
+	                },
+	                error: function() {
+	                    swal("Error!", "Something went wrong. Please try again.", "error");
+	                }
+	            });
+	        } else {
+	            swal("Teacher is safe!");
+	        }
+	    });
+	}
+
+	
+		/* function deleteTeacher(tid){
 			swal({
 				  title: "Are you sure?",
-				  text: "You want to delete this Student!",
+				  text: "You want to delete this Teacher!",
 				  icon: "warning",
 				  buttons: true,
 				  dangerMode: true,
@@ -507,12 +668,12 @@
 				.then((willDelete) => {
 				  if (willDelete) {
 				    
-					  window.location = "student/" + id + "/delete";
+					  window.location = "teacher/" + tid + "/delete";
 				  } else {
-				    swal("Student is safe!");
+				    swal("Teacher is safe!");
 				  }
 				});
-		}
+		} */
 	</script>
 
     <!-- Core plugin JavaScript-->

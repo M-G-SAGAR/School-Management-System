@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Details</title>
+    <title>Teacher Details</title>
      <style>
 	   .my_profile_picture{
 	    width: 200px;
@@ -31,12 +31,12 @@
             <nav class="mt-4">
                 <ul>
                     <li class="px-4 py-2 hover:bg-blue-800">Dashboard</li>
-                    <li class="px-4 py-2 hover:bg-blue-800">Students
+                    <li class="px-4 py-2 hover:bg-blue-800">Teachers
                         <ul class="ml-4">
-                            <li class="px-2 py-1 hover:bg-blue-700">All Students</li>
-                            <li class="px-2 py-1 bg-blue-700">Student Details</li>
+                            <li class="px-2 py-1 hover:bg-blue-700">All Teachers</li>
+                            <li class="px-2 py-1 bg-blue-700">Teacher Details</li>
                             <li class="px-2 py-1 hover:bg-blue-700">Admit Form</li>
-                            <li class="px-2 py-1 hover:bg-blue-700">Student Promotion</li>
+                            <li class="px-2 py-1 hover:bg-blue-700">Teacher Promotion</li>
                         </ul>
                     </li>
                     <li class="px-4 py-2 hover:bg-blue-800">Teachers</li>
@@ -53,50 +53,53 @@
                 <h1 class="text-xl font-semibold">Welcome To School Management System</h1>
                 <!-- <input type="text" placeholder="Search Here ..." class="border rounded p-2">
  -->                <div class="flex items-center space-x-4">
-                    <span>Hi! ${student.firstName}</span>
+                    <span>Hi! ${teacher.firstName}</span>
                    <!--  <img src="img/image.jpg" alt="Admin" class="w-10 h-10 rounded-full"> -->
                 </div>
             </header>
 
-            <!-- Student Details Section -->
+            <!-- teacher Details Section -->
             <main class="p-6 bg-gray-50 m-4 rounded-xl shadow-md">
                 <div class="flex space-x-6">
-               <%--  <h2 class="text-1xl font-bold text-blue-800 mb-2">${student.firstName} ${student.lastName}</h2> --%>
+               <%--  <h2 class="text-1xl font-bold text-blue-800 mb-2">${teacher.firstName} ${teacher.lastName}</h2> --%>
                     <div class="flex-shrink-0">
-                     <h2 class="text-1xl font-bold text-blue-800 mb-6">Details - ${student.firstName} ${student.lastName}</h2>
-                        <img src="<c:url value='/img/${student.image}'/>" class="my_profile_picture">
-                    </div>
+                     <h2 class="text-1xl font-bold text-blue-800 mb-6">Details - ${teacher.firstName} ${teacher.secondName}</h2>
+                         <img src="<c:url value='/img/${teacher.image}'/>" class="my_profile_picture">
+                     </div>
                     <div class="flex-1">
                         
-                       <!--  <p class="text-gray-600">Student ID: <strong>STUDENT#${student.id}</strong></p> -->
+                     
 
                         <div class="mt-4 ml-4 space-y-6">
                             <div>
                                 <h3 class="text-xl font-semibold text-blue-700 border-b-1 border-blue-500 pb-1 mb-2">Personal Information</h3>
                                 <ul class="space-y-2 text-gray-700">
-                                    <li><strong>Gender:</strong> ${student.gender}</li>
-                                    <li><strong>Date of Birth:</strong> ${student.dob}</li>
-                                    <li><strong>Religion:</strong> Hinduism</li>
-                                    <li><strong>Father's Occupation:</strong> Businessman</li>
+                                	<li><strong>First Name:</strong> ${teacher.firstName}</li>
+                                	<li><strong>Last Name:</strong> ${teacher.secondName}</li>
+                                    <li><strong>Gender:</strong> ${teacher.gender}</li>
+                                    <li><strong>Date of Birth:</strong> ${teacher.dob}</li> 
+                                   <li><strong>Section:</strong> ${teacher.section}</li>
                                 </ul>
                             </div>
 
                             <div>
                                 <h3 class="text-xl font-semibold text-blue-700 border-b-1 border-blue-500 pb-1 mb-2">Academic Information</h3>
                                 <ul class="space-y-2 text-gray-700">
-                                    <li><strong>Roll Number:</strong> ${student.rollNumber}</li>
+                                   <%--  <li><strong>Roll Number:</strong> ${teacher.rollNumber}</li> --%>
                                     <li><strong>Admission Date:</strong> 05/04/2016</li>
-                                    <li><strong>Class:</strong> ${student.className}</li>
+                                    <li><strong>Class:</strong> ${teacher.className}</li> 
+                                     <li><strong>Religion:</strong> ${teacher.religion}</li>
+                                    <li><strong>Teacher Id's:</strong> ${teacher.idNumber}</li>
                                 </ul>
                             </div>
 
                             <div>
                                 <h3 class="text-xl font-semibold text-blue-700 border-b-1 border-blue-500 pb-1 mb-2">Contact Information</h3>
                                 <ul class="space-y-2 text-gray-700">
-                                    <li><strong>Email:</strong> ${student.email}</li>
-                                    <li><strong>Parent Contact:</strong> ${student.parentsContact}</li>
-                                    <li><strong>Phone:</strong> ${student.contact}</li>
-                                    <li><strong>Address:</strong> ${student.address}</li>
+                                    <li><strong>Email:</strong> ${teacher.email}</li>
+                                    <li><strong>Contact:</strong> ${teacher.phone}</li>
+                                    <li><strong>Phone:</strong> ${teacher.subject}</li>
+                                   <li><strong>Address:</strong> ${teacher.address}</li>
                                 </ul>
                             </div>
                         </div>

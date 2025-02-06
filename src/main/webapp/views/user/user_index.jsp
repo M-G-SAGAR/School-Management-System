@@ -37,6 +37,20 @@
 <!-- Font Awesome for icons -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	
+	<style>
+	.sidebar-custom-blue {
+    background-color: #003366 !important; /* Dark Blue */
+	}
+
+	.navbar {
+            background-color: #fbbf24;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+	
+</style>
 <style>
 .calendar-card {
 	height: 96%;
@@ -83,18 +97,16 @@ html, body {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul
-			class="navbar-nav bg-dark sidebar sidebar-dark accordion"
-			id="accordionSidebar">
+		<ul class="navbar-nav sidebar sidebar-dark accordion sidebar-custom-blue" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<!-- <i class="fas fa-laugh-wink"></i> -->
 					<i class="fa-solid fa-graduation-cap"></i>
 				</div>
 				<div class="sidebar-brand-text mx-3">
-					User <sup></sup>
+					School Mang. Sys <sup></sup>
 				</div>
 			</a>
 
@@ -103,7 +115,7 @@ html, body {
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link"
-				href="index.html"><i class="fa-solid fa-house"></i> <span>Home</span></a>
+				href="index"><i class="fa-solid fa-house"></i> <span>Home</span></a>
 			</li>
 
 			<!-- Divider -->
@@ -138,9 +150,8 @@ html, body {
 				<div id="collapseStudents" class="collapse"
 					aria-labelledby="headingStudents" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-student">Add Student</a> 
+						<a class="collapse-item" href="add-student">Admit Form</a> 
 						<a class="collapse-item" href="show-students">Show Student Table</a>
-						<a class="collapse-item" href="show-students">Admit Form</a>
 						<a class="collapse-item" href="show-students">Student Promotion</a>
 						
 					</div>
@@ -208,7 +219,7 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa-solid fa-clipboard-user"></i> <span>Notice</span>
+				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-clipboard"></i> <span>Notice</span>
 			</a>
 				<div id="collapseAttendance" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
@@ -223,7 +234,7 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa-solid fa-clipboard-user"></i> <span>Message</span>
+				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-comments"></i> <span>Message</span>
 			</a>
 				<div id="collapseAttendance" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
@@ -238,7 +249,7 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa-solid fa-clipboard-user"></i> <span>Exam</span>
+				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-file-alt"></i> <span>Exam</span>
 			</a>
 				<div id="collapseAttendance" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
@@ -253,7 +264,7 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa-solid fa-clipboard-user"></i> <span>Account</span>
+				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa fa-user"></i> <span>Account</span>
 			</a>
 				<div id="collapseAttendance" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
@@ -296,7 +307,7 @@ html, body {
 					</button>
 
 					<!-- Topbar Search -->
-					<form
+					<!-- <form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
 							<input type="text" class="form-control bg-light border-0 small"
@@ -308,7 +319,8 @@ html, body {
 								</button>
 							</div>
 						</div>
-					</form>
+					</form> -->
+					<div class="navbar">Welcome to School Management System</div>
 
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">

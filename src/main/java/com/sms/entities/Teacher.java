@@ -23,10 +23,18 @@ public class Teacher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int tid;
+	private Long tid;
 	private String firstName;
 	private String secondName;
+	private String className;
+	private String section;
+	private String gender;
+	private LocalDate dob;
+	private String address;
+	private String religion;
 	private String email;
+	private String idNumber;
+	private String nationality;
 	private String phone;
 	private String image;
 	private String subject;

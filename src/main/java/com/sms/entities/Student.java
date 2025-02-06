@@ -49,4 +49,31 @@ public class Student {
 	@Column(name="parents_contact")
 	private String parentsContact;
 	
+	private String addmissionNo;
+	
+	private String religion;
+	
+	//parents info
+	@Column(name="father_name")
+	private String fatherName;
+	
+	@Column(name="mother_name")
+	private String motherName;
+	
+	private String nationality;
+	
+	@Column(name="father_occupation")
+	private String fatherOccupation;
+	
+	@Column(name="mother_occupation")
+	private String motherOccupation;
+	
+	@Column(name="present_address")
+	private String presentAddress;
+	
+	@Column(name="permanent_address")
+	private String permanentAddress;
+	
+	private String image;
+	
 }

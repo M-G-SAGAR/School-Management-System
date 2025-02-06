@@ -1,5 +1,10 @@
 package com.sms.controllers;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +12,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +20,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sms.entities.Student;
 import com.sms.entities.User;
@@ -52,10 +60,27 @@ public class StudentController {
 	
 	//Handler For Processing Add Student Form
 	@PostMapping("/create-student")
-	public String createBook(@ModelAttribute("student") Student student, Principal principal, HttpSession session) throws Exception {
+	public String createBook(
+			@ModelAttribute("student") Student student, 
+			@RequestParam("profileImage") MultipartFile file,Principal principal, HttpSession session) throws Exception {
 		
 		try {
-			
+			//processing and uploading file
+			if(file.isEmpty()) {
+				//if the file is empty then try our message
+				System.out.println("FIle Not Uploaded.....");
+				student.setImage("student.png");
+			}else {
+				//file to folder and update the name to student
+				student.setImage(file.getOriginalFilename());
+				
+				File saveFile = new ClassPathResource("static/img").getFile();
+				Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
+				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+				
+				System.out.println("Image Uploaded.....");
+			}
+		
 			studentRepository.save(student);
 			
 			session.setAttribute("message", new Message("Successfully Added Student !!", "alert-success"));
