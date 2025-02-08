@@ -74,7 +74,7 @@ public class UserController {
 	
 	@PostMapping("/submitAttendance")
     public String submitAttendance(@RequestParam("date") String date,
-                                   @RequestParam Map<String, String> allParams,
+                                   @RequestParam Map<String, String> allParams,Student students,
                                    Model model) {
 
         // Process the attendance data
@@ -115,6 +115,7 @@ public class UserController {
         // Add data to the model to display on the confirmation page
         model.addAttribute("date", date);
         model.addAttribute("attendanceMap", attendanceMap);
+        model.addAttribute("students", students); 
         
         // Return the view name to display (confirmation page)
         return "user/attendanceConfirmation"; // This should correspond to an attendanceConfirmation.jsp or .html

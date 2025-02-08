@@ -195,11 +195,11 @@
 			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fas fa-clipboard"></i>
-				 <span>Notice</span>
+				data-toggle="collapse" data-target="#collapsNotice"
+				aria-expanded="true" aria-controls="collapsNotice"> <i
+					class="fas fa-clipboard"></i> <span>Notice</span>
 			</a>
-				<div id="collapseAttendance" class="collapse"
+				<div id="collapsNotice" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Notice</a> <a
@@ -211,12 +211,10 @@
 			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance">
-<i class="fas fa-comments"></i> <!-- Multiple messages -->
-				<span>Message</span>
-			</a>
-				<div id="collapseAttendance" class="collapse"
+				data-toggle="collapse" data-target="#collapseMessage"
+				aria-expanded="true" aria-controls="collapseMessage"><i
+					class="fas fa-comments"></i> <span>Message</span> </a>
+				<div id="collapseMessage" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Message</a> <a
@@ -228,10 +226,11 @@
 			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fas fa-file-alt"></i> <span>Exam</span>
+				data-toggle="collapse" data-target="#collapseExam"
+				aria-expanded="true" aria-controls="collapseExam"> <i
+					class="fas fa-file-alt"></i> <span>Exam</span>
 			</a>
-				<div id="collapseAttendance" class="collapse"
+				<div id="collapseExam" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Exam</a> <a
@@ -242,10 +241,11 @@
 			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fas fa-user"></i><span>Account</span>
+				data-toggle="collapse" data-target="#collapseAccount"
+				aria-expanded="true" aria-controls="collapseAccount"> <i
+					class="fa fa-user"></i> <span>Account</span>
 			</a>
-				<div id="collapseAttendance" class="collapse"
+				<div id="collapseAccount" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Account</a> <a
@@ -253,7 +253,6 @@
 							Table</a>
 					</div>
 				</div></li>
-
 
 
 			<!-- Divider -->
@@ -485,6 +484,14 @@
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary">DataTables
 								- Students</h6>
+						
+						<div
+							class="d-sm-flex align-items-center justify-content-between mb-0 mt-3">
+							<a href="#" onclick="exportData()"
+								class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+								class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+						</div>
+						
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -600,6 +607,8 @@
 	<script src="../../vendor/jquery/jquery.min.js"></script>
 	<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
 
 	<script>
 		
@@ -617,6 +626,16 @@
 					  window.location = "student/" + id + "/delete";
 				  } else {
 				    swal("Student is safe!");
+				  }
+				});
+		}
+	</script>
+	<script>
+		function exportData(){
+			TableToExcel.convert(document.getElementById("dataTable"), {
+				  name: "students.xlsx",
+				  sheet: {
+				    name: "Sheet 1"
 				  }
 				});
 		}

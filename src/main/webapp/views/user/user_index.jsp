@@ -218,10 +218,11 @@ html, body {
 			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-clipboard"></i> <span>Notice</span>
+				data-toggle="collapse" data-target="#collapsNotice"
+				aria-expanded="true" aria-controls="collapsNotice"> <i
+					class="fas fa-clipboard"></i> <span>Notice</span>
 			</a>
-				<div id="collapseAttendance" class="collapse"
+				<div id="collapsNotice" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Notice</a> <a
@@ -229,14 +230,14 @@ html, body {
 							Table</a>
 					</div>
 				</div></li>
-				
-				<!-- Divider -->
+
+			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-comments"></i> <span>Message</span>
-			</a>
-				<div id="collapseAttendance" class="collapse"
+				data-toggle="collapse" data-target="#collapseMessage"
+				aria-expanded="true" aria-controls="collapseMessage"><i
+					class="fas fa-comments"></i> <span>Message</span> </a>
+				<div id="collapseMessage" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Message</a> <a
@@ -244,29 +245,30 @@ html, body {
 							Table</a>
 					</div>
 				</div></li>
-				
-				<!-- Divider -->
+
+			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"><i class="fas fa-file-alt"></i> <span>Exam</span>
+				data-toggle="collapse" data-target="#collapseExam"
+				aria-expanded="true" aria-controls="collapseExam"> <i
+					class="fas fa-file-alt"></i> <span>Exam</span>
 			</a>
-				<div id="collapseAttendance" class="collapse"
+				<div id="collapseExam" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Exam</a> <a
-							class="collapse-item" href="show-attendance">Show Exam
-							Table</a>
+							class="collapse-item" href="show-attendance">Show Exam Table</a>
 					</div>
 				</div></li>
-				
-				<!-- Divider -->
+
+			<!-- Divider -->
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa fa-user"></i> <span>Account</span>
+				data-toggle="collapse" data-target="#collapseAccount"
+				aria-expanded="true" aria-controls="collapseAccount"> <i
+					class="fa fa-user"></i> <span>Account</span>
 			</a>
-				<div id="collapseAttendance" class="collapse"
+				<div id="collapseAccount" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="attendance">Add Account</a> <a
@@ -274,7 +276,6 @@ html, body {
 							Table</a>
 					</div>
 				</div></li>
-
 
 
 			<!-- Divider -->
@@ -534,7 +535,8 @@ html, body {
 											<div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
 										</div>
 										<div class="col-auto">
-											<i class="fas fa-calendar fa-2x text-gray-300"></i>
+											<i class="fa-solid fa-user"></i>
+											<!-- <i class="fas fa-calendar fa-2x text-gray-300"> --></i>
 										</div>
 									</div>
 								</div>
@@ -553,7 +555,8 @@ html, body {
 											<div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
 										</div>
 										<div class="col-auto">
-											<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+											<i class="fa-solid fa-person-chalkboard"></i>
+											<!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"> --></i>
 										</div>
 									</div>
 								</div>
@@ -573,13 +576,13 @@ html, body {
 												<div class="col-auto">
 													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
 												</div>
-												<div class="col">
+												<!-- <div class="col">
 													<div class="progress progress-sm mr-2">
 														<div class="progress-bar bg-info" role="progressbar"
 															style="width: 50%" aria-valuenow="50" aria-valuemin="0"
 															aria-valuemax="100"></div>
 													</div>
-												</div>
+												</div> -->
 											</div>
 										</div>
 										<div class="col-auto">
