@@ -23,11 +23,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sms.entities.Fees;
 import com.sms.entities.Student;
 import com.sms.entities.User;
 import com.sms.helper.Message;
+import com.sms.repository.FeesRepository;
 import com.sms.repository.StudentRepository;
 import com.sms.repository.UserRepository;
+import com.sms.serviceImpl.FeesServiceImpl;
 
 @Controller
 @RequestMapping("/user")
@@ -35,6 +38,11 @@ public class StudentController {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	
+	private FeesServiceImpl feesServiceImpl;
+	
+	@Autowired
+	private FeesRepository feesRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -62,7 +70,9 @@ public class StudentController {
 	@PostMapping("/create-student")
 	public String createBook(
 			@ModelAttribute("student") Student student, 
-			@RequestParam("profileImage") MultipartFile file,Principal principal, HttpSession session) throws Exception {
+			@RequestParam("profileImage") MultipartFile file,
+			@RequestParam("parentsPhoto") MultipartFile file1,
+			Principal principal, HttpSession session) throws Exception {
 		
 		try {
 			//processing and uploading file
@@ -70,18 +80,39 @@ public class StudentController {
 				//if the file is empty then try our message
 				System.out.println("FIle Not Uploaded.....");
 				student.setImage("student.png");
+				student.setParentImage("student.png");
 			}else {
 				//file to folder and update the name to student
 				student.setImage(file.getOriginalFilename());
+				student.setParentImage(file1.getOriginalFilename());
 				
 				File saveFile = new ClassPathResource("static/img").getFile();
 				Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 				
+				File saveFile1 = new ClassPathResource("static/img").getFile();
+				Path path1 = Paths.get(saveFile1.getAbsolutePath()+File.separator+file1.getOriginalFilename());
+				Files.copy(file1.getInputStream(), path1, StandardCopyOption.REPLACE_EXISTING);
+				
 				System.out.println("Image Uploaded.....");
 			}
 		
 			studentRepository.save(student);
+			
+			
+			/*
+			 * try { // ✅ Automatically save student details in the fees table Fees fees =
+			 * new Fees(); fees.setStudentId(student.getId());
+			 * fees.setStudentName(student.getFirstName() + " " + student.getLastName());
+			 * fees.setTotalFees(10000.0); // Default total fees fees.setPaidFees(0.0);
+			 * fees.setDueFees(10000.0); // Initially, due amount is total fees
+			 * 
+			 * feesRepository.save(fees); // Save fees entry
+			 * 
+			 * } catch (Exception e) { e.printStackTrace(); }
+			 */
+
+	        
 			
 			session.setAttribute("message", new Message("Successfully Added Student !!", "alert-success"));
 			return "user/add_student";
@@ -109,6 +140,21 @@ public class StudentController {
 		return "user/show_student";
 	}
 	
+	//Handler to fetch students or show all students
+		@GetMapping("/show-parents")
+		public String showParents(Model model) {
+			model.addAttribute("title", "List Of Parents");
+			
+			List<Student> students = this.studentRepository.findAll();
+			model.addAttribute("students", students); 
+			
+			for(Student s : students) {
+				
+				System.out.println(s);
+			}
+			return "user/parent_details";
+		}
+	
 	//Handler to show or fetch student by ID
 	@GetMapping("/student/{id}/show")
 	public String showStudent(@PathVariable("id") long id, Model model) {
@@ -119,15 +165,21 @@ public class StudentController {
 	}
 	
 	//Handler to delete student by ID
-	@GetMapping("/student/{id}/delete")
-	public String deleteStudent(@PathVariable("id") long id) {
-		studentRepository.deleteById(id);
-		return "redirect:/user/show-students";
+	@PostMapping("/student/{id}/delete")
+	public String deleteStudent(@PathVariable("id") long id, HttpSession session) {
+	    if (studentRepository.existsById(id)) {
+	        studentRepository.deleteById(id);
+	        session.setAttribute("message", new Message("Student deleted successfully!", "alert-success"));
+	    } else {
+	        session.setAttribute("message", new Message("Student not found!", "alert-danger"));
+	    }
+	    return "redirect:/user/show-students";
 	}
+
 	
 	//Handler to update page to send blank object fill the field to modify
-	@PostMapping("/student/{id}/edit")
-	public String editStudentForm(@PathVariable("id") long id, Model model) {
+	@GetMapping("/student/{id}/edit")
+	public String updateStudentForm(@PathVariable("id") long id, Model model) {
 		
 		Student student = studentRepository.findById(id).get();
 		model.addAttribute("student",student);
@@ -136,21 +188,71 @@ public class StudentController {
 	
 	//Handler to Modify Object with provided details
 	@PostMapping("/student-update/{id}")
-	public String updateStudent(@PathVariable("id") long id, @ModelAttribute("student") Student student, HttpSession session) {
-		try {
-			
-			student.setId(id);
-			System.out.println(student);
-			studentRepository.save(student);
-			session.setAttribute("message", new Message("Successfully Update Student !!", "alert-success"));
-		
-		} catch (Exception e) {
-			System.out.println(student);
-			session.setAttribute("message", new Message("Something Went Wrong !!", "alert-success"));
-		
-		}
-		
-		return "redirect:/user/student/"+student.getId()+"/edit";
+	public String updateStudentHandler(
+	        @PathVariable("id") long id,
+	        @ModelAttribute("student") Student student,
+	        @RequestParam("profileImage") MultipartFile studentImage,
+	        @RequestParam("parentsPhoto") MultipartFile parentImage,  // Ensure name matches form
+	        HttpSession session) {
+
+	    try {
+	        Student studentOld = studentRepository.findById(id).orElseThrow();
+
+	        // Handle Student Image
+	        if (!studentImage.isEmpty()) {
+	            // Get the folder where images are stored
+	            File saveFile = new ClassPathResource("static/img").getFile();
+
+	            // Delete old image
+	            File oldFile = new File(saveFile, studentOld.getImage());
+	            if (oldFile.exists()) {
+	                oldFile.delete();
+	                System.out.println("Old Student Image Deleted: " + oldFile.getAbsolutePath());
+	            }
+
+	            // Save new image
+	            Path studentPath = Paths.get(saveFile.getAbsolutePath(), studentImage.getOriginalFilename());
+	            Files.copy(studentImage.getInputStream(), studentPath, StandardCopyOption.REPLACE_EXISTING);
+	            System.out.println("New Student Image Saved: " + studentPath.toString());
+
+	            student.setImage(studentImage.getOriginalFilename());
+	        } else {
+	            student.setImage(studentOld.getImage()); // Keep old image if no new file is uploaded
+	        }
+
+	        // Handle Parent Image
+	        if (!parentImage.isEmpty()) {
+	            File saveFile = new ClassPathResource("static/img").getFile();
+
+	            // Delete old parent image
+	            File oldParentFile = new File(saveFile, studentOld.getParentImage());
+	            if (oldParentFile.exists()) {
+	                oldParentFile.delete();
+	                System.out.println("Old Parent Image Deleted: " + oldParentFile.getAbsolutePath());
+	            }
+
+	            // Save new parent image
+	            Path parentPath = Paths.get(saveFile.getAbsolutePath(), parentImage.getOriginalFilename());
+	            Files.copy(parentImage.getInputStream(), parentPath, StandardCopyOption.REPLACE_EXISTING);
+	            System.out.println("New Parent Image Saved: " + parentPath.toString());
+
+	            student.setParentImage(parentImage.getOriginalFilename());
+	        } else {
+	            student.setParentImage(studentOld.getParentImage()); // Keep old parent image
+	        }
+
+	        student.setId(id);
+	        studentRepository.save(student);
+	        session.setAttribute("message", new Message("Successfully Updated Student!", "alert-success"));
+
+	    } catch (Exception e) {
+	        e.printStackTrace(); // Print full error details in console
+	        session.setAttribute("message", new Message("Something Went Wrong!", "alert-danger"));
+	    }
+
+	    return "redirect:/user/student/" + student.getId() + "/edit";
 	}
+
+
 	
 }

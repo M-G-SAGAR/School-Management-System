@@ -27,6 +27,7 @@ import com.sms.entities.Student;
 import com.sms.entities.Teacher;
 import com.sms.entities.User;
 import com.sms.helper.Message;
+import com.sms.repository.StudentRepository;
 import com.sms.repository.TeacherRepository;
 import com.sms.repository.UserRepository;
 
@@ -63,7 +64,7 @@ public class TeacherController {
 	@PostMapping("create-teacher")
 	public String processAddTeacher(
 			@ModelAttribute("teacher") Teacher teacher,
-			@RequestParam("parentsPhoto") MultipartFile file,
+			@RequestParam("teacherPhoto") MultipartFile file,
 			Model model, HttpSession session) {
 		
 		try {
@@ -121,6 +122,60 @@ public class TeacherController {
 	public String deleteTeacher(@PathVariable("id") long id) {
 	    teacherRepository.deleteById(id);
 	    return "redirect:/user/show-teachers";
+	}
+	
+	//Handler to update page to send blank object fill the field to modify
+	@GetMapping("/teacher/{id}/edit")
+	public String updateTeacherForm(@PathVariable("id") long id, Model model) {
+		
+		Teacher teacher = teacherRepository.findById(id);
+		model.addAttribute("teacher",teacher);
+		return "user/update_teacher";
+	}
+	
+	//Handler to update page to send blank object fill the field to modify
+	@PostMapping("/teacher-update/{id}")
+	public String updateTeacherHandler(
+			@PathVariable("id") long id,
+			@ModelAttribute("teacher") Teacher teacher,
+			@RequestParam("teacherImage") MultipartFile file,
+			HttpSession session) {
+		
+		try {
+			Teacher teacherOld = teacherRepository.findById(id);
+			
+			if(!file.isEmpty()) {
+				// Get the folder where images are stored
+				File saveFile = new ClassPathResource("static/img").getFile();
+				
+				// Delete old image
+				File oldFile = new File(saveFile, teacherOld.getImage());
+				if(oldFile.exists()) {
+					oldFile.delete();
+					System.out.println("Old Teacher Image Deleted " + oldFile.getAbsolutePath());
+				}
+				
+				//save the new Image
+				Path teacherPath = Paths.get(saveFile.getAbsolutePath(), file.getOriginalFilename());
+				Files.copy(file.getInputStream(), teacherPath, StandardCopyOption.REPLACE_EXISTING);
+				System.out.println("New Student Image Saved: "+ teacherPath.toString());
+				
+				teacher.setImage(file.getOriginalFilename());
+			}else {
+				teacher.setImage(teacherOld.getImage());
+			}
+			
+			teacher.setTid(id);
+			teacherRepository.save(teacher);
+			 session.setAttribute("message", new Message("Successfully Updated Teacher!", "alert-success"));
+
+		} catch(Exception e){
+			e.printStackTrace();
+			 session.setAttribute("message", new Message("Something Went Wrong!", "alert-success"));
+
+		}
+		
+		return "redirect:/user/teacher/" + teacher.getTid() + "/edit";
 	}
 
 }

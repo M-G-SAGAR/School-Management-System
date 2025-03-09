@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Admit Form</title>
+    <title>Teacher Admit Form</title>
     <style>
         body {
             background-color: #f3f4f6;
@@ -111,15 +111,21 @@
 
 <body>
 	<!-- SideBar -->
-    <div class="sidebar">
-     <h3><i class="fa-solid fa-graduation-cap"></i> School Mang. Sys </h3>
-    <hr>
-    <a href="show-students"><i class="fa-solid fa-user"></i> Students</a>
-    <a href="show-teachers"><i class="fa-solid fa-person-chalkboard"></i> Teachers</a>
-    <a href="show-parents"><i class="fa-solid fa-id-badge"></i> Parents</a>
-    <a href="show-students"><i class="fa-solid fa-book"></i> Library</a>
-    <a href="attendance"><i class="fa-solid fa-clipboard-user"></i> Attendance</a>
-</div> 
+   <div class="sidebar">
+		<h3>
+			<i class="fa-solid fa-graduation-cap"></i> School Mang. Sys
+		</h3>
+		<hr>
+		<a href="/user/show-students"><i class="fa-solid fa-user"></i> Students</a> 
+		<a href="/user/show-teachers"><i class="fa-solid fa-person-chalkboard"></i> Teachers</a> 
+		<a href="/user/show-parents"><i class="fa-solid fa-id-badge"></i> Parents</a>
+		<a href="/user/show-class"><i class="fa-solid fa-book"></i> Class</a> 
+		<a href="/user/show-subject"><i class="fa-solid fa-book-open"></i> Subject</a> 
+		<a href="/user/attendance"><i class="fa-solid fa-clipboard-user"></i> Attendance</a> 
+		<a href="/user/show-notice"><i class="fas fa-clipboard"></i> Notice</a> 
+		<a href="/user/show-message"><i class="fas fa-comments"></i> Message</a> 
+		<a href="/user/account/${user.userId }/show"><i class="fas fa-file-alt"></i> Accounts</a>
+	</div>  
     
    <!--  End SideBar -->
 
@@ -151,16 +157,16 @@
                     <label>Class</label>
                     <select name="className">
                         <option disabled selected>Class</option>
-                        <option>Class 1</option>
-                        <option>Class 2</option>
-                        <option>Class 3</option>
-                        <option>Class 4</option>
-                        <option>Class 5</option>
-                        <option>Class 6</option>
-                        <option>Class 7</option>
-                        <option>Class 8</option>
-                        <option>Class 9</option>
-                        <option>Class 10</option>
+                        <option>1st Standard</option>
+                        <option>2nd Standard</option>
+                        <option>3rd Standard</option>
+                        <option>4th Standard</option>
+                        <option>5th Standard</option>
+                        <option>6th Standard</option>
+                        <option>7th Standard</option>
+                        <option>8th Standard</option>
+                        <option>9th Standard</option>
+                        <option>10th Standard</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -238,7 +244,7 @@
                 </div>
                 <div class="form-group">
                     <label>Upload Parents Photo (150px x 150px)</label>
-                    <input type="file" name="parentsPhoto">
+                    <input type="file" name="teacherPhoto">
                 </div>
             </div>
 

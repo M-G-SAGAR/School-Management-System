@@ -129,6 +129,21 @@
 
 					</div>
 				</div></li>
+				
+				<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseFees"
+				aria-expanded="true" aria-controls="collapseFees"> <i
+					class="fa-solid fa-user"></i> <span>Fees Structure</span>
+			</a>
+				<div id="collapseFees" class="collapse"
+					aria-labelledby="headingFees" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" href="pay-fees">Payment</a> <a
+							class="collapse-item" href="show-students-fees">Show Student Fees</a>
+
+					</div>
+				</div></li>
 
 			<!-- Divider -->
 
@@ -140,7 +155,7 @@
 				<div id="collapseParents" class="collapse"
 					aria-labelledby="headingParents" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-parent">Add Parent</a> <a
+						<!-- <a class="collapse-item" href="add-parent">Add Parent</a> --> <a
 							class="collapse-item" href="show-parents">Show Parent Table</a>
 					</div>
 				</div></li>
@@ -155,8 +170,8 @@
 				<div id="collapseClasses" class="collapse"
 					aria-labelledby="headingClasses" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-student">Add Class</a> <a
-							class="collapse-item" href="show-students">Show Class Table</a>
+						<a class="collapse-item" href="add-class">Add Class</a> <a
+							class="collapse-item" href="show-class">Show Class Table</a>
 					</div>
 				</div></li>
 
@@ -171,7 +186,7 @@
 					aria-labelledby="headingSubjects" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="add-subject">Add Subject</a> <a
-							class="collapse-item" href="show-subjects">Show Subjects
+							class="collapse-item" href="show-subject">Show Subjects
 							Table</a>
 					</div>
 				</div></li>
@@ -202,8 +217,8 @@
 				<div id="collapsNotice" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="attendance">Add Notice</a> <a
-							class="collapse-item" href="show-attendance">Show Notice
+						<a class="collapse-item" href="add-notice">Add Notice</a> <a
+							class="collapse-item" href="show-notice">Show Notice
 							Table</a>
 					</div>
 				</div></li>
@@ -248,9 +263,9 @@
 				<div id="collapseAccount" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="attendance">Add Account</a> <a
-							class="collapse-item" href="show-attendance">Show Account
-							Table</a>
+						<a
+							class="collapse-item" href="/user/account/${user.userId }/show"> Account
+							Setting</a>
 					</div>
 				</div></li>
 
@@ -503,6 +518,7 @@
 											<th>First Name</th>
 											<th>Last Name</th>
 											<th>Email</th>
+											<th>Addmision Date</th>
 											<th>Roll No.</th>
 											<th>Action</th>
 										</tr>
@@ -520,12 +536,14 @@
 												<span> ${student.firstName }</span></td>
 												<td>${student.lastName }</td>
 												<td>${student.email }</td>
+												<td>${student.dob }</td>
 												<td>${student.rollNumber }</td>
 
 												<td>
 													<div class="d-flex align-items-center gap-2 m-1">
-														<!-- Added margin to the container -->
-														<form action="student/${student.id}/edit" method="post"
+													
+														<!-- For Update -->
+														<form action="student/${student.id}/edit" method=""
 															class="m-0 p-0">
 															<button type="submit"
 																class="btn btn-outline-success btn-sm mx-1 my-0">
@@ -533,18 +551,21 @@
 																<i class="fa fa-pen"></i>
 															</button>
 														</form>
-
+														
+														<!-- For Delete -->
 														<a href="#"
 															class="btn btn-outline-danger btn-sm mx-1 my-0"
 															onclick="deleteStudent(${student.id});"> <i
 															class="fa fa-trash"></i>
-														</a> <a href="student/${student.id}/show"
+														</a> 
+														
+														<!-- For View -->
+														<a href="student/${student.id}/show"
 															class="btn btn-outline-primary btn-sm mx-1 my-0"> <i
 															class="fa fa-eye"></i>
 														</a>
 													</div>
 												</td>
-
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -612,23 +633,28 @@
 
 	<script>
 		
-		function deleteStudent(id){
-			swal({
-				  title: "Are you sure?",
-				  text: "You want to delete this Student!",
-				  icon: "warning",
-				  buttons: true,
-				  dangerMode: true,
-				})
-				.then((willDelete) => {
-				  if (willDelete) {
-				    
-					  window.location = "student/" + id + "/delete";
-				  } else {
-				    swal("Student is safe!");
-				  }
-				});
-		}
+	function deleteStudent(id) {
+	    swal({
+	        title: "Are you sure?",
+	        text: "You want to delete this Student!",
+	        icon: "warning",
+	        buttons: true,
+	        dangerMode: true,
+	    })
+	    .then((willDelete) => {
+	        if (willDelete) {
+	            let form = document.createElement("form");
+	            form.method = "POST";
+	            form.action = "/user/student/" + id + "/delete";
+	            document.body.appendChild(form);
+	            form.submit();
+	        } else {
+	            swal("Student is safe!");
+	        }
+	    });
+	}
+	
+	
 	</script>
 	<script>
 		function exportData(){

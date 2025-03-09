@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,19 +38,19 @@
 <!-- Font Awesome for icons -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-	
-	<style>
-	.sidebar-custom-blue {
-    background-color: #003366 !important; /* Dark Blue */
-	}
 
-	.navbar {
-            background-color: #fbbf24;
-            padding: 10px;
-            color: white;
-            text-align: center;
-            font-size: 20px;
-	
+<style>
+.sidebar-custom-blue {
+	background-color: #003366 !important; /* Dark Blue */
+}
+
+.navbar {
+	background-color: #fbbf24;
+	padding: 10px;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+}
 </style>
 <style>
 .calendar-card {
@@ -97,10 +98,14 @@ html, body {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<ul class="navbar-nav sidebar sidebar-dark accordion sidebar-custom-blue" id="accordionSidebar">
+		<ul
+			class="navbar-nav sidebar sidebar-dark accordion sidebar-custom-blue"
+			id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<!-- <i class="fas fa-laugh-wink"></i> -->
 					<i class="fa-solid fa-graduation-cap"></i>
@@ -114,9 +119,8 @@ html, body {
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active"><a class="nav-link"
-				href="index"><i class="fa-solid fa-house"></i> <span>Home</span></a>
-			</li>
+			<li class="nav-item active"><a class="nav-link" href="index"><i
+					class="fa-solid fa-house"></i> <span>Home</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -127,7 +131,8 @@ html, body {
 			<!--   Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
-				aria-expanded="true" aria-controls="collapseTwo"> <i class="fa-solid fa-person-chalkboard"></i> <span>Teachers</span>
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fa-solid fa-person-chalkboard"></i> <span>Teachers</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
@@ -145,15 +150,17 @@ html, body {
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseStudents"
-				aria-expanded="true" aria-controls="collapseStudents"> <i class="fa-solid fa-user"></i> <span>Students</span>
+				aria-expanded="true" aria-controls="collapseStudents"> <i
+					class="fa-solid fa-user"></i> <span>Students</span>
 			</a>
 				<div id="collapseStudents" class="collapse"
 					aria-labelledby="headingStudents" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-student">Admit Form</a> 
-						<a class="collapse-item" href="show-students">Show Student Table</a>
-						<a class="collapse-item" href="show-students">Student Promotion</a>
-						
+						<a class="collapse-item" href="add-student">Admit Form</a> <a
+							class="collapse-item" href="show-students">Show Student Table</a>
+						<a class="collapse-item" href="show-students">Student
+							Promotion</a>
+
 					</div>
 				</div></li>
 
@@ -161,13 +168,14 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseParents"
-				aria-expanded="true" aria-controls="collapseParents"> <i class="fa-solid fa-id-badge"></i> <span>Parents</span>
+				aria-expanded="true" aria-controls="collapseParents"> <i
+					class="fa-solid fa-id-badge"></i> <span>Parents</span>
 			</a>
 				<div id="collapseParents" class="collapse"
 					aria-labelledby="headingParents" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-parent">Add Parent</a> <a
-							class="collapse-item" href="show-parents">Show Parent Table</a>
+						<!-- <a class="collapse-item" href="add-parent">Add Parent</a> -->
+						<a class="collapse-item" href="show-parents">Show Parent Table</a>
 					</div>
 				</div></li>
 
@@ -175,13 +183,14 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseClasses"
-				aria-expanded="true" aria-controls="collapseClasses"> <i class="fa-solid fa-book"></i> <span>Classes</span>
+				aria-expanded="true" aria-controls="collapseClasses"> <i
+					class="fa-solid fa-book"></i> <span>Classes</span>
 			</a>
 				<div id="collapseClasses" class="collapse"
 					aria-labelledby="headingClasses" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-student">Add Class</a> <a
-							class="collapse-item" href="show-students">Show Class Table</a>
+						<a class="collapse-item" href="add-class">Add Class</a> <a
+							class="collapse-item" href="show-class">Show Class Table</a>
 					</div>
 				</div></li>
 
@@ -189,14 +198,14 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseSubjects"
-				aria-expanded="true" aria-controls="collapseSubjects"> <i class="fa-solid fa-book-open"></i> <span>Subjects</span>
+				aria-expanded="true" aria-controls="collapseSubjects"> <i
+					class="fa-solid fa-book-open"></i> <span>Subjects</span>
 			</a>
 				<div id="collapseSubjects" class="collapse"
 					aria-labelledby="headingSubjects" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="add-subject">Add Subject</a> <a
-							class="collapse-item" href="show-subjects">Show Subjects
-							Table</a>
+							class="collapse-item" href="show-subject">Show Subjects Table</a>
 					</div>
 				</div></li>
 
@@ -204,7 +213,8 @@ html, body {
 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseAttendance"
-				aria-expanded="true" aria-controls="collapseAttendance"> <i class="fa-solid fa-clipboard-user"></i> <span>Attendance</span>
+				aria-expanded="true" aria-controls="collapseAttendance"> <i
+					class="fa-solid fa-clipboard-user"></i> <span>Attendance</span>
 			</a>
 				<div id="collapseAttendance" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
@@ -225,9 +235,8 @@ html, body {
 				<div id="collapsNotice" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="attendance">Add Notice</a> <a
-							class="collapse-item" href="show-attendance">Show Notice
-							Table</a>
+						<a class="collapse-item" href="add-notice">Add Notice</a> <a
+							class="collapse-item" href="show-notice">Show Notice Table</a>
 					</div>
 				</div></li>
 
@@ -271,9 +280,9 @@ html, body {
 				<div id="collapseAccount" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="attendance">Add Account</a> <a
-							class="collapse-item" href="show-attendance">Show Account
-							Table</a>
+						<!-- <a class="collapse-item" href="attendance">Add Account</a> --> <a
+							class="collapse-item" href="account/${user.userId }/show">Account Setting
+							</a>
 					</div>
 				</div></li>
 
@@ -536,7 +545,8 @@ html, body {
 										</div>
 										<div class="col-auto">
 											<i class="fa-solid fa-user"></i>
-											<!-- <i class="fas fa-calendar fa-2x text-gray-300"> --></i>
+											<!-- <i class="fas fa-calendar fa-2x text-gray-300"> -->
+											</i>
 										</div>
 									</div>
 								</div>
@@ -556,7 +566,8 @@ html, body {
 										</div>
 										<div class="col-auto">
 											<i class="fa-solid fa-person-chalkboard"></i>
-											<!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"> --></i>
+											<!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"> -->
+											</i>
 										</div>
 									</div>
 								</div>
@@ -786,23 +797,41 @@ html, body {
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">Notic Board</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Notice Board</h6>
 								</div>
-								<div class="card-body">
-									<div class="text-center">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+								<%-- <div class="card-body">
+								<c:forEach items="${notice }" var="notices">
+									<div class="">
+										<!-- <img class="img-fluid px-3 px-sm-4 mt-3 mb-4"
 											style="width: 25rem;" src="img/undraw_posting_photo.svg"
-											alt="...">
+											alt="..."> -->
+											<fmt:parseDate var="parsedDate" value="${notice.date }" pattern="yyyy-MM-dd"/>
+											<fmt:formatDate value="${parsedDate }" pattern="dd MMM,yyyy"/>
+											
+											<p id="notice-date" style="color:red;" data-date="${notices.date}"></p>
+											<p style="color:green; font-weight:bold">${notices.postedBy }</p>
 									</div>
 									<p>
-										Add some quality, svg illustrations to your project courtesy
+										<!-- Add some quality, svg illustrations to your project courtesy
 										of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>,
 										a constantly updated collection of beautiful svg images that
-										you can use completely free and without attribution!
+										you can use completely free and without attribution! -->
+										
+											${notices.details}
 									</p>
-									<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
-										Illustrations on unDraw &rarr;</a>
-								</div>
+									<a target="_blank" rel="nofollow" href="https://undraw.co/">${notices.title } &rarr;</a>
+								</c:forEach>
+								</div> --%>
+								<div class="card-body">
+    <c:forEach items="${notice}" var="notices">
+        <div class="notice-card" style="padding: 15px; margin-bottom: 20px; border-bottom: 1px solid #ddd;">
+            <p class="notice-date" style="color:red;" data-date="${notices.date}"></p>
+            <p style="color:green; font-weight:bold">${notices.postedBy}</p>
+            <p>${notices.details}</p>
+            <a target="_blank" rel="nofollow" href="https://undraw.co/">${notices.title} &rarr;</a>
+        </div>
+    </c:forEach>
+</div>
 							</div>
 							<!--   Approach -->
 							<div class="card shadow mb-4">
@@ -916,6 +945,39 @@ html, body {
 			calendar.render();
 		});
 	</script>
+
+
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let noticeDateElements = document.querySelectorAll(".notice-date");
+
+        noticeDateElements.forEach(noticeDateElement => {
+            let dateString = noticeDateElement.getAttribute("data-date")?.trim();
+
+            if (!dateString) {
+                noticeDateElement.innerText = "Invalid Date";
+                return;
+            }
+
+            // Convert "DD-MM-YYYY" or "DD/MM/YYYY" to "YYYY-MM-DD"
+            if (/^\d{2}-\d{2}-\d{4}$/.test(dateString) || /^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+                let parts = dateString.split(/[-\/]/);
+                dateString = `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
+
+            let date = new Date(dateString);
+
+            if (isNaN(date.getTime())) {
+                noticeDateElement.innerText = "Invalid Date Format";
+                return;
+            }
+
+            let formattedDate = date.getDate() + " " + date.toLocaleString("en-US", { month: "short" }) + ", " + date.getFullYear();
+            noticeDateElement.innerText = formattedDate;
+        });
+    });
+</script>
+
 	<!-- Bootstrap JS (necessary for dropdown functionality) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </body>

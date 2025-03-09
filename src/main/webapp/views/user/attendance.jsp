@@ -163,7 +163,7 @@
 				<div id="collapseParents" class="collapse"
 					aria-labelledby="headingParents" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="add-parent">Add Parent</a> <a
+						<!-- <a class="collapse-item" href="add-parent">Add Parent</a> --> <a
 							class="collapse-item" href="show-parents">Show Parent Table</a>
 					</div>
 				</div></li>
@@ -271,9 +271,9 @@
 				<div id="collapseAccount" class="collapse"
 					aria-labelledby="headingAttendance" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="attendance">Add Account</a> <a
-							class="collapse-item" href="show-attendance">Show Account
-							Table</a>
+						 <a
+							class="collapse-item" href="/user/account/${user.userId }/show"> Account
+							Setting</a>
 					</div>
 				</div></li>
 

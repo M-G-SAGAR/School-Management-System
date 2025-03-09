@@ -76,8 +76,8 @@
                                 <ul class="space-y-2 text-gray-700">
                                     <li><strong>Gender:</strong> ${student.gender}</li>
                                     <li><strong>Date of Birth:</strong> ${student.dob}</li>
-                                    <li><strong>Religion:</strong> Hinduism</li>
-                                    <li><strong>Father's Occupation:</strong> Businessman</li>
+                                    <li><strong>Religion:</strong> ${student.religion}</li>
+                                    <li><strong>Father's Occupation:</strong> ${student.fatherOccupation}</li>
                                 </ul>
                             </div>
 
@@ -85,7 +85,7 @@
                                 <h3 class="text-xl font-semibold text-blue-700 border-b-1 border-blue-500 pb-1 mb-2">Academic Information</h3>
                                 <ul class="space-y-2 text-gray-700">
                                     <li><strong>Roll Number:</strong> ${student.rollNumber}</li>
-                                    <li><strong>Admission Date:</strong> 05/04/2016</li>
+                                    <li><strong>Admission Number:</strong> ${student.addmissionNo}</li>
                                     <li><strong>Class:</strong> ${student.className}</li>
                                 </ul>
                             </div>
@@ -95,7 +95,7 @@
                                 <ul class="space-y-2 text-gray-700">
                                     <li><strong>Email:</strong> ${student.email}</li>
                                     <li><strong>Parent Contact:</strong> ${student.parentsContact}</li>
-                                    <li><strong>Phone:</strong> ${student.contact}</li>
+                                    <li><strong>Parent Address:</strong> ${student.presentAddress}</li>
                                     <li><strong>Address:</strong> ${student.address}</li>
                                 </ul>
                             </div>

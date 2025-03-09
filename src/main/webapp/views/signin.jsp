@@ -23,10 +23,45 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    
+        <style>
+	body {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('${pageContext.request.contextPath}/img/Pencil.jpg') 
+                no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px); /* Apply blur effect */
+    z-index: -1; /* Send it to the background */
+}
+
+.container {
+    position: relative;
+    z-index: 1; /* Keeps content above the blurred background */
+}
+
+.card {
+    background: rgba(160, 160, 160, 0.8); /* Transparent white */
+    backdrop-filter: blur(10px); /* Blur effect for the card */
+}
+	
+
+</style>
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="">
 
     <div class="container">
 
@@ -39,11 +74,13 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                           <!--  <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                           <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                            <img src="${pageContext.request.contextPath}/img/cottonbro.jpg" alt="Register Image" class="col-lg-6 d-none d-lg-block">
+                    
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4 mt-4">Welcome Back!</h1>
                                     </div>
                                     
                                    <!--  <form action="/index" method="post" class="user"> -->

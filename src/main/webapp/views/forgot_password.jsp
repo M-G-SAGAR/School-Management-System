@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +42,17 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
+                                    <c:if test="${not empty sessionScope.message}">
+    							<div class="alert text-center ${sessionScope.message.type}" role="alert">
+        							<p><c:out value="${sessionScope.message.content}" /></p>
+    							</div>
+    							<% session.removeAttribute("message"); %>
+							</c:if>
                                         <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
                                         <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                             and we'll send you a link to reset your password!</p>
                                     </div>
-                                    <form class="user" method="post"action="/send-otp">
+                                    <form class="user" method="post" action="/send-otp">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" name="email" aria-describedby="emailHelp"

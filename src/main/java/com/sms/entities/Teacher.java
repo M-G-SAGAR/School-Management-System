@@ -1,7 +1,5 @@
 package com.sms.entities;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +27,7 @@ public class Teacher {
 	private String className;
 	private String section;
 	private String gender;
-	private LocalDate dob;
+	private String dob;
 	private String address;
 	private String religion;
 	private String email;

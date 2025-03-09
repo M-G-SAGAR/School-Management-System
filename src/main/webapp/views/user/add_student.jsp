@@ -111,15 +111,21 @@
 
 <body>
 	<!-- SideBar -->
-    <div class="sidebar">
-    <h3><i class="fa-solid fa-graduation-cap"></i> School Mang. Sys </h3>
-    <hr>
-    <a href="show-students"><i class="fa-solid fa-user"></i> Students</a>
-    <a href="show-teachers"><i class="fa-solid fa-person-chalkboard"></i> Teachers</a>
-    <a href="show-parents"><i class="fa-solid fa-id-badge"></i> Parents</a>
-    <a href="show-students"><i class="fa-solid fa-book"></i> Library</a>
-    <a href="attendance"><i class="fa-solid fa-clipboard-user"></i> Attendance</a>
-</div> 
+   <div class="sidebar">
+		<h3>
+			<i class="fa-solid fa-graduation-cap"></i> School Mang. Sys
+		</h3>
+		<hr>
+		<a href="/user/show-students"><i class="fa-solid fa-user"></i> Students</a> 
+		<a href="/user/show-teachers"><i class="fa-solid fa-person-chalkboard"></i> Teachers</a> 
+		<a href="/user/show-parents"><i class="fa-solid fa-id-badge"></i> Parents</a>
+		<a href="/user/show-class"><i class="fa-solid fa-book"></i> Class</a> 
+		<a href="/user/show-subject"><i class="fa-solid fa-book-open"></i> Subject</a> 
+		<a href="/user/attendance"><i class="fa-solid fa-clipboard-user"></i> Attendance</a> 
+		<a href="/user/show-notice"><i class="fas fa-clipboard"></i> Notice</a> 
+		<a href="/user/show-message"><i class="fas fa-comments"></i> Message</a> 
+		<a href="/user/account/${user.userId }/show"><i class="fas fa-file-alt"></i> Accounts</a>
+	</div> 
     
    
    <!--  End SideBar -->
@@ -152,8 +158,16 @@
                     <label>Class</label>
                     <select name="className">
                         <option disabled selected>Class</option>
-                        <option>Class 1</option>
-                        <option>Class 2</option>
+                        <option>1st Standard</option>
+                        <option>2nd Standard</option>
+                        <option>3rd Standard</option>
+                        <option>4th Standard</option>
+                        <option>5th Standard</option>
+                        <option>6th Standard</option>
+                        <option>7th Standard</option>
+                        <option>8th Standard</option>
+                        <option>9th Standard</option>
+                        <option>10th Standard</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -223,16 +237,6 @@
                     <input type="text" name="parentsContact">
                 </div>
                 <div class="form-group">
-                    <label>Mother Occupation</label>
-                    <select name="motherOccupation">
-                        <option disabled selected>Mother Occupation</option>
-                        <option>House Wife</option>
-                        <option>Employee</option>
-                        <option>Bussiness</option>
-                        <option>Independend</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label>Father Occupation</label>
                      <select name="fatherOccupation">
                         <option disabled selected>Father Occupation</option>
@@ -240,6 +244,16 @@
                         <option>Employee</option>
                         <option>Bussiness</option>
                         <option>Goverment Employee</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Mother Occupation</label>
+                    <select name="motherOccupation">
+                        <option disabled selected>Mother Occupation</option>
+                        <option>House Wife</option>
+                        <option>Employee</option>
+                        <option>Bussiness</option>
+                        <option>Independend</option>
                     </select>
                 </div>
                 <div class="form-group">
