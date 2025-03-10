@@ -243,7 +243,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Upload Parents Photo (150px x 150px)</label>
+                    <label>Upload Teacher Photo (150px x 150px)</label>
                     <input type="file" name="teacherPhoto">
                 </div>
             </div>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sms.entities.Fees;
 import com.sms.entities.Student;
+import com.sms.helper.Message;
 import com.sms.repository.FeesRepository;
 import com.sms.repository.StudentRepository;
 import com.sms.studentDTO.StudentDTO;
@@ -61,12 +63,12 @@ public class FeesController {
             if (student.isPresent()) {
                 Student student1 = student.get();
 
-                // 🟢 Set default total fees if null
+                //  Set default total fees if null
                 if (student1.getTotalFees() == null) {
                     student1.setTotalFees(10000.0);
                 }
                 
-                // 🟢 Fetch fees for the student
+                //  Fetch fees for the student
                 Optional<Fees> feesOptional = feesRepository.findByStudentId(studentId);
                 if (feesOptional.isPresent()) {
                     Fees fees = feesOptional.get();
@@ -94,14 +96,14 @@ public class FeesController {
 
     @Transactional
     @PostMapping("/save-fees")
-    public String saveFees(@ModelAttribute Fees fees, @RequestParam("studentId") Long studentId) {
+    public String saveFees(@ModelAttribute Fees fees, @RequestParam("studentId") Long studentId, HttpSession session) {
         Optional<Student> studentOptional = studentRepository.findById(studentId);
         Optional<Fees> feesById = feesRepository.findByStudentId(studentId);  // Check by student ID, not fee ID
         
         if (studentOptional.isPresent()) {
             Student student = studentOptional.get();
 
-            // 🛠 Fix for null values
+            // Fix for null values
             double totalFees = (student.getTotalFees() != null) ? student.getTotalFees() : 10000.0;
             double paidFees = (fees.getPaidFees() != null) ? fees.getPaidFees() : 0.0;
             double dueFees = (fees.getDueFees() != null) ? fees.getDueFees() : totalFees - paidFees;
@@ -126,32 +128,30 @@ public class FeesController {
             fees.setStatus(dueFees == 0);
 
             if (feesById.isPresent()) {
-                // 🛠 Update existing fee record
+                // Update existing fee record
                 Fees existingFees = feesById.get();
                 existingFees.setPaidFees(existingFees.getPaidFees() + paidFees);  // Accumulate paid fees
                 existingFees.setDueFees(dueFees);
                 existingFees.setPaymentMethod(fees.getPaymentMethod());
                 existingFees.setStatus(dueFees == 0);
                 feesRepository.save(existingFees);  // Update record
+                session.setAttribute("message", new Message("Payment Successfully !!", "alert-success"));
             } else {
                 feesRepository.save(fees);  // Insert new record if none exists
+                session.setAttribute("message", new Message("Something Went Wrong !!", "alert-danger"));
             }
         }
         return "redirect:/user/pay-fees";
     }
 
-    
-    public void getDueFees(Model model) {
-    	Fees fees = (Fees) feesRepository.findAll();
-        Student student2 = fees.getStudent();
-        long id2 = student2.getId();
+    @GetMapping("/show-students-fees")
+    public String showFeesTable(Model model) {
+    	
+    	List <Fees> feesList = feesRepository.findAll();
+   
+        model.addAttribute("feesList", feesList);
         
-        Optional<Fees> findById = feesRepository.findById(id2);
-        Double dueFees = findById.get().getDueFees();
-        
-        System.out.println(dueFees);
-        
-        model.addAttribute("dueFees", dueFees);
+        return "user/show_student_fees";
     }
 
 

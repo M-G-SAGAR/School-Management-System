@@ -140,7 +140,7 @@
 					aria-labelledby="headingFees" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" href="pay-fees">Payment</a> <a
-							class="collapse-item" href="show-students-fees">Show Student Fees</a>
+							class="collapse-item" href="show-students-fees">Student Fees Table</a>
 
 					</div>
 				</div></li>

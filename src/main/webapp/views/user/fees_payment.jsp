@@ -134,7 +134,10 @@ h1, h2 {
 		</h3>
 		<hr>
 		<a href="/user/show-students"><i class="fa-solid fa-user"></i>
-			Students</a> <a href="/user/show-teachers"><i
+			Students</a>
+			<a href="/user/show-students-fees"><i class="fa-solid fa-user"></i>
+			Students Fees Table</a>
+			 <a href="/user/show-teachers"><i
 			class="fa-solid fa-person-chalkboard"></i> Teachers</a> <a
 			href="/user/show-parents"><i class="fa-solid fa-id-badge"></i>
 			Parents</a> <a href="/user/show-class"><i class="fa-solid fa-book"></i>
@@ -169,31 +172,17 @@ h1, h2 {
 			<h3>Payment</h3>
 			<form action="save-fees" method="post" object="${feesList }"
 				class="user" enctype="multipart/form-data">
-				<h4>Notice Information</h4>
+				<h4>Student Payment Information</h4>
+				
+				  <c:if test="${not empty sessionScope.message}">
+    							<div class="alert text-center ${sessionScope.message.type}" role="alert">
+        							<p><c:out value="${sessionScope.message.content}" /></p>
+    							</div>
+    							<% session.removeAttribute("message"); %>
+							</c:if>
+				
 				<div class="form-section">
-					<%-- <div class="form-group">
-						<label>Student Id</label> <input type="text" name="id"
-							value="${student.id }">
-					</div> --%>
-					<%-- <div class="form-group">
-						<label>Student Id</label> <select id="studentId" name="id"
-							class="form-control">
-							<option value="">Select Student ID</option>
-						</select>
-					</div>
-
-					<div class="form-group">
-						<label>Student Name</label> <input type="text" name="studentName"
-							value="${student.firstName } ${student.lastName}">
-					</div>
-
-					<div class="form-group">
-						<label>Class</label> <input type="text" name="className"
-							value="${student.className }">
-					</div> --%>
-
-
-
+					
 					<div class="form-group">
 						<label>Student Id</label> <select id="studentId" name="studentId"
 							class="form-control">
@@ -239,22 +228,23 @@ h1, h2 {
 
 					<div class="form-group">
 						<label>Paid Fees</label> <input type="text" id="paidFees"
-							name="paidFees">
+							name="paidFees" required>
 					</div>
 
 					<div class="form-group">
 						<label>Due Fees</label> <input type="text" id="dueFees"
 							name="dueFees" value="${dueFees }" readonly>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>Status</label> <select name="status" required>
 							<option disabled selected>Choose Status</option>
 							<option value="false">Due</option>
 							<option value="true">Paid</option>
 						</select>
-					</div>
+					</div> -->
+					
 					<div class="form-group">
-						<label>Date</label> <input type="date" name="date">
+						<label>Date</label> <input type="date" name="date" required>
 					</div>
 
 					<!-- <div class="form-group">
@@ -316,6 +306,7 @@ h1, h2 {
                             document.getElementById("totalFees").value = data.totalFees || "";
                             document.getElementById("paidFees").value = data.paidFees || "";
                             document.getElementById("dueFees").value = data.dueFees || ""; 
+                            document.getElementById("status").value = data.status || "";
                         } else {
                             console.error("Student data is null or undefined.");
                         }

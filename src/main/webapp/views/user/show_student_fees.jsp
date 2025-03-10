@@ -35,6 +35,25 @@
     object-fit: cover;
     border-radius: 50%;
     }
+    
+    .status-label{
+    
+    padding:5px 10px;
+    border-radius:20px;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    display:inline-block;
+    min-width:50px;
+    }
+    
+    .paid{
+    background-color:green;
+    }
+    
+    .due{
+    background-color:red;
+    }
 	
 </style>
 
@@ -518,13 +537,12 @@
 											<th>Id</th>
 											<th>First Name</th>
 											<th>Last Name</th>
-											<th>Email</th>
 											<th>Class</th>
-											<th>Addmision Date</th>
-											<th>Roll No.</th>
+											<th>Payment Method</th>
 											<th>Total Fees</th>
 											<th>Paid Fees</th>
 											<th>Due Fees</th>
+											<th>Date</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -534,46 +552,56 @@
 											<tr>
 												<td class="font-weight-bold"><a
 													href="student/${student.id}/show"
-													style="color: blue; text-decoration: none;">STUDENT#${student.id
+													style="color: blue; text-decoration: none;">Fees#${student.id
 														} </a></td>
 												<td>
-												<img alt="profilePhoto" src="<c:url value='/img/${student.image}'/>" class="my_profile_picture">
+												<%-- <img alt="profilePhoto" src="<c:url value='/img/${student.image}'/>" class="my_profile_picture"> --%>
 												
-												<span> ${student.firstName }</span></td>
-												<td>${student.lastName }</td>
-												<td>${student.email }</td>
+												<%-- <span> ${student.firstName }</span> --%>
+												${student.first_name }												
+												</td>
+												<td>${student.last_name }</td>
 												<td>${student.className }</td>
-												<td>${student.dob }</td>
-												<td>${student.rollNumber }</td>
-												<td>${student.fees.totalFees }</td>
-												<td>${student.fees.paidFees }</td>
-												<td>${student.fees.dueFees }</td>
-												<td>${student.fees.status }</td>
+												<td>${student.paymentMethod }</td>
+												<td>${student.totalFees }</td>
+												<td>${student.paidFees }</td>
+												<td>${student.dueFees }</td>
+												<td>${student.date }</td>
+												<td>
+													<c:choose>
+														<c:when test="${student.status }">
+															<span class="status-label paid">Paid</span>
+														</c:when>
+														<c:otherwise>
+															<span class="status-label due">Due</span>
+														</c:otherwise>
+													</c:choose>
+												</td>
 
 												<td>
 													<div class="d-flex align-items-center gap-2 m-1">
 													
 														<!-- For Update -->
-														<form action="student/${student.id}/edit" method=""
+														<%-- <form action="student/${student.id}/edit" method=""
 															class="m-0 p-0">
 															<button type="submit"
 																class="btn btn-outline-success btn-sm mx-1 my-0">
 																<!-- Horizontal margin -->
 																<i class="fa fa-pen"></i>
 															</button>
-														</form>
+														</form> --%>
 														
 														<!-- For Delete -->
-														<a href="#"
+														<%-- <a href="#"
 															class="btn btn-outline-danger btn-sm mx-1 my-0"
 															onclick="deleteStudent(${student.id});"> <i
 															class="fa fa-trash"></i>
-														</a> 
+														</a>  --%>
 														
 														<!-- For View -->
-														<a href="student/${student.id}/show"
+														<a href="pay-fees"
 															class="btn btn-outline-primary btn-sm mx-1 my-0"> <i
-															class="fa fa-eye"></i>
+															class="fa fa-credit-card"></i>
 														</a>
 													</div>
 												</td>
